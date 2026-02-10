@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amrut Civic Connect | Professional Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="brand-container">
+        <span class="brand-main">AMRUT</span>
+        <span class="brand-sub">Civic Connect</span>
+      </div>
+    </div>
+    
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item active" data-target="view-home">
+          <i data-lucide="home"></i>
+          <span>Introduction</span>
+        </li>
+        <li class="nav-item" data-target="view-calculator">
+          <i data-lucide="calculator"></i>
+          <span>Calculator</span>
+        </li>
+        <li class="nav-item" data-target="view-structure">
+          <i data-lucide="bar-chart-3"></i>
+          <span>Score Structure</span>
+        </li>
+        <li class="nav-item" data-target="view-benefits">
+          <i data-lucide="award"></i>
+          <span>Benefits & Roadmap</span>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="main-wrapper">
+    <header class="header">
+      <div class="breadcrumb">Dashboard / <span id="current-view-name">Introduction</span></div>
+      <div class="user-profile">
+        <i data-lucide="user-circle"></i>
+      </div>
+    </header>
+
+    <div class="view-container">
+      <!-- Home View -->
+      <section id="view-home" class="view active">
+        <h1 class="section-title">Responsible Citizen. Strong Nation.</h1>
+        <p class="section-desc">A unified digital ecosystem recognizing social responsibility alongside financial reliability.</p>
+        
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>The Vision</h3>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-top: 1rem;">
+              Amrut Civic Connect bridges the gap between individual actions and governance rewards. By aggregating data from verified public systems, we create a transparent "Civic Score" that honors those who contribute daily to a better society.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Key Metrics</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
+              <li><i data-lucide="check-circle-2" style="color: var(--accent); width: 18px; margin-right: 8px;"></i> Utility Compliance</li>
+              <li><i data-lucide="check-circle-2" style="color: var(--accent); width: 18px; margin-right: 8px;"></i> Traffic Adherence</li>
+              <li><i data-lucide="check-circle-2" style="color: var(--accent); width: 18px; margin-right: 8px;"></i> Community Volunteering</li>
+              <li><i data-lucide="check-circle-2" style="color: var(--accent); width: 18px; margin-right: 8px;"></i> Environmental Care</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white;">
+          <h2 style="color: white;">Get Started</h2>
+          <p style="margin: 1rem 0 1.5rem; opacity: 0.9;">Analyze your civic impact by using our interactive simulator.</p>
+          <button class="btn" style="background: white; color: var(--primary);" onclick="document.querySelector('[data-target=view-calculator]').click()">
+            Open Calculator <i data-lucide="arrow-right" style="margin-left: 8px;"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- Calculator View -->
+      <section id="view-calculator" class="view">
+        <h1 class="section-title">Trust Simulator</h1>
+        <p class="section-desc">Test how civic actions influence your consolidated trust index.</p>
+        
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Citizen Profile</h3>
+            <div class="field">
+              <label>Full Name</label>
+              <input type="text" id="citizen-name" placeholder="e.g. Rahul Deshmukh" value="Rahul Deshmukh">
+            </div>
+            <div class="field">
+              <label>Aadhaar Number (Masked)</label>
+              <input type="text" value="XXXX-XXXX-6721" disabled>
+            </div>
+            <div class="field">
+              <label>Current CIBIL Score</label>
+              <input type="number" id="cibil-input" value="742" min="300" max="900">
+            </div>
+            <button id="run-fetch" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">
+              Calculate Civic Score
+            </button>
+          </div>
+
+          <div class="card" style="display: flex; flex-direction: column;">
+            <h3>Data Pipeline</h3>
+            <div class="progress-container" style="margin: 1rem 0;">
+              <div id="fetch-progress" class="progress-bar"></div>
+            </div>
+            <div class="source-list" id="source-list">
+              <div class="source-item" data-source="ekyc">
+                <div class="status-dot"></div>
+                <div><strong>Aadhaar eKYC</strong><p style="font-size: 0.8rem; color: var(--text-muted);">Verifying Identity</p></div>
+              </div>
+              <div class="source-item" data-source="utilities">
+                <div class="status-dot"></div>
+                <div><strong>Utilities API</strong><p style="font-size: 0.8rem; color: var(--text-muted);">Fetching Billing History</p></div>
+              </div>
+              <div class="source-item" data-source="traffic">
+                <div class="status-dot"></div>
+                <div><strong>RTO/Traffic API</strong><p style="font-size: 0.8rem; color: var(--text-muted);">Checking Violations</p></div>
+              </div>
+              <div class="source-item" data-source="municipal">
+                <div class="status-dot"></div>
+                <div><strong>Municipal API</strong><p style="font-size: 0.8rem; color: var(--text-muted);">Syncing Local Records</p></div>
+              </div>
+              <div class="source-item" data-source="ngo">
+                <div class="status-dot"></div>
+                <div><strong>Volunteering DB</strong><p style="font-size: 0.8rem; color: var(--text-muted);">Analyzing Contributions</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rings-grid">
+          <div class="ring-wrapper">
+            <div class="ring" id="civic-ring" style="--ring-color: #2563eb; --progress: 0;">
+              <div class="ring-text">
+                <span class="ring-val"><span id="civic-ring-val">0</span><small>/1000</small></span>
+                <span class="ring-label">Civic Score</span>
+              </div>
+            </div>
+            <p style="font-size: 0.875rem; font-weight: 600;">Social Responsibility</p>
+          </div>
+          <div class="ring-wrapper">
+            <div class="ring" id="cibil-ring" style="--ring-color: #64748b; --progress: 0;">
+              <div class="ring-text">
+                <span class="ring-val"><span id="cibil-ring-val">0</span><small>/1000</small></span>
+                <span class="ring-label">Financial Index</span>
+              </div>
+            </div>
+            <p style="font-size: 0.875rem; font-weight: 600;">Financial Reliability</p>
+          </div>
+          <div class="ring-wrapper">
+            <div class="ring" id="combined-ring" style="--ring-color: #10b981; --progress: 0;">
+              <div class="ring-text">
+                <span class="ring-val"><span id="combined-ring-val">0</span><small>/1000</small></span>
+                <span class="ring-label">Trust Index</span>
+              </div>
+            </div>
+            <p style="font-size: 0.875rem; font-weight: 600;">Consolidated Trust</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 2rem; background: var(--accent-soft); border-color: var(--accent);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h4 style="color: #064e3b;">Recommended Status</h4>
+              <p id="citizen-tier" style="color: #0d9488; font-weight: 800; font-size: 1.25rem;">Run calculation</p>
+            </div>
+            <div style="text-align: right;">
+              <h4 style="color: #064e3b;">Benefit Band</h4>
+              <p id="benefit-band" style="color: #0d9488; font-weight: 800; font-size: 1.25rem;">Waiting...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Structure View -->
+      <section id="view-structure" class="view">
+        <h1 class="section-title">Civic Score Framework</h1>
+        <p class="section-desc">Understanding how we weigh different social actions.</p>
+        
+        <div class="card">
+          <div id="breakdown-list">
+            <div class="breakdown-row">
+              <div class="breakdown-info"><span>Bill Payments</span><span id="bill-val">0 / 200</span></div>
+              <div class="mini-bar-bg"><div id="bill-bar" class="mini-bar-fill"></div></div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-info"><span>Traffic Compliance</span><span id="traffic-val">0 / 200</span></div>
+              <div class="mini-bar-bg"><div id="traffic-bar" class="mini-bar-fill"></div></div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-info"><span>Social Participation</span><span id="social-val">0 / 200</span></div>
+              <div class="mini-bar-bg"><div id="social-bar" class="mini-bar-fill"></div></div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-info"><span>Volunteering</span><span id="volunteer-val">0 / 150</span></div>
+              <div class="mini-bar-bg"><div id="volunteer-bar" class="mini-bar-fill"></div></div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-info"><span>Environmental Care</span><span id="environment-val">0 / 150</span></div>
+              <div class="mini-bar-bg"><div id="environment-bar" class="mini-bar-fill"></div></div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-info"><span>Community Contribution</span><span id="community-val">0 / 100</span></div>
+              <div class="mini-bar-bg"><div id="community-bar" class="mini-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Weightage Allocation</h3>
+          <p style="color: var(--text-muted); margin-top: 1rem;">Weights are periodically reviewed by governance committees to ensure fair representation of civic effort.</p>
+        </div>
+      </section>
+
+      <!-- Benefits View -->
+      <section id="view-benefits" class="view">
+        <h1 class="section-title">Impact & Rewards</h1>
+        <p class="section-desc">Real-world value for responsible citizens and governments.</p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div style="background: #eff6ff; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--primary);">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3>Fast-Track Service</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Priority processing for municipal licenses and permits based on your Civic Score.</p>
+          </div>
+          <div class="card">
+            <div style="background: #ecfdf5; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--accent);">
+              <i data-lucide="tag"></i>
+            </div>
+            <h3>Utility Discounts</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Points-based rebates on electricity and water bills for high-compliance citizens.</p>
+          </div>
+          <div class="card">
+            <div style="background: #fef2f2; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--danger);">
+              <i data-lucide="trending-up"></i>
+            </div>
+            <h3>Insurance Benefits</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Lower health and vehicle insurance premiums for individuals with high safety ratings.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Strategic Roadmap</h3>
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; gap: 1.5rem;">
+              <div style="flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); margin-top: 4px;"></div>
+              <div>
+                <strong>Phase 1: Pilot Launch</strong>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">Initial rollout in selected Tier-1 cities with municipal data integration.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 1.5rem;">
+              <div style="flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: #94a3b8; margin-top: 4px;"></div>
+              <div>
+                <strong>Phase 2: State Expansion</strong>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">Unified state-level portal and RTO/Police record syncing.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 1.5rem;">
+              <div style="flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: #94a3b8; margin-top: 4px;"></div>
+              <div>
+                <strong>Phase 3: National Platform</strong>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">Integration with Digital India initiatives and banking ecosystems.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
