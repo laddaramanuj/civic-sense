@@ -1,18 +1,18 @@
 :root {
   --sidebar-width: 280px;
-  --bg-main: #f8fafc;
-  --bg-sidebar: #0f172a;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --accent: #10b981;
-  --accent-soft: #ecfdf5;
+  --bg-main: #fef7f0;
+  --bg-sidebar: #1a1410;
+  --primary: #E87444;
+  --primary-hover: #D66533;
+  --accent: #f59e0b;
+  --accent-soft: #fef3e2;
   --danger: #ef4444;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
+  --text-main: #2d1810;
+  --text-muted: #8b6f47;
+  --border: #f4d9c4;
   --card: #ffffff;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08);
   --radius: 12px;
 }
 
@@ -89,7 +89,7 @@ body {
   font-family: 'Georgia', serif;
   font-size: 2.25rem;
   font-weight: 700;
-  color: #f59e0b; /* Amber/Orange color from image */
+  color: #E87444;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -97,7 +97,7 @@ body {
 .brand-sub {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: #f5c89f;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -115,7 +115,7 @@ body {
   gap: 1rem;
   padding: 0.875rem 1rem;
   border-radius: var(--radius);
-  color: #94a3b8;
+  color: #d4b59f;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -123,8 +123,8 @@ body {
 }
 
 .nav-item:hover {
-  background: #1e293b;
-  color: white;
+  background: #2d1f15;
+  color: #fef7f0;
 }
 
 .nav-item.active {
@@ -234,7 +234,7 @@ h1, h2, h3 {
 .field input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: none;
 }
 
 /* Buttons */
@@ -258,7 +258,6 @@ h1, h2, h3 {
 
 .btn-primary:hover {
   background: var(--primary-hover);
-  transform: translateY(-1px);
 }
 
 .btn:disabled {
@@ -364,7 +363,7 @@ h1, h2, h3 {
 }
 
 .source-item.done { border-color: var(--accent); background: var(--accent-soft); }
-.source-item.in-progress { border-color: var(--primary); background: #eff6ff; }
+.source-item.in-progress { border-color: var(--primary); background: #fef3e2; }
 
 .status-dot {
   width: 12px;
